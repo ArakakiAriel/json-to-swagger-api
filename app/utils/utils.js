@@ -67,7 +67,12 @@ const getValue = (data) => {
     }else if(char == '['){
         pos = findPositionCloseTag(data,'[', ']');
     }else{
-        pos = findLastCharacter(data, ',\n');
+        pos = findLastCharacter(data, ',\n'); // TODO: Corregir esto cuando es el último elemento del objeto 
+        if(pos == -1){
+            pos = data.length;
+        }else{
+            pos -= 3;
+        }
     }
 
     value = data.substr(0,pos);
